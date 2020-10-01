@@ -1,35 +1,33 @@
-#include <iostream>
-#include <climits>
-using namespace std;
+def sol(l):
+    ls=[]
+    for i in range(len(l)-1):
+        # print(l[i])
+        # print(l[i],max(l[i+1:]))
+        
+        if l[i] >= max(l[i+1:]):
+            ls.append(l[i])
+    ls.append(l[-1])
+    # print(ls)
+    return ls
+      
+      
+def sol2(l):
+    ls=[]
+    for i in range(len(l)):
+        le = l[i]
+        for j in range(i+1,len(l)):
+            if l[j] >= le:
+                le = l[j]
+        ls.append(le)
+    # print(ls)
+    return set(ls)
 
-int main() {
-	long long t;
-	cin>>t;
-
-	while(t--){
-		long long n;
-		cin>>n;
-		long long a[n],b[n],p=0;
-
-		for (long long i = 0; i < n; i++)
-		{
-			cin>>a[i];
-		}
-
-		long long maximum = INT_MIN;
-		for (long long i = n-1; i >=0 ; i--){
-			if (a[i]>=maximum){
-			    maximum=a[i];
-			    b[p]=a[i];
-			    p++;
-			}
-		}
-		
-		for(long long i=p-1;i>=0;i--){
-		    cout<<b[i]<<" ";
-		}
-
-		cout<<"\n";
-	}
-	return 0;
-}
+for t in range(int(input())):
+    n = input()
+    l=list(map(int,input().split()))
+    # ls=sol(l)
+    ls=sol2(l)
+    for i in ls:
+        print(i,end=" ")
+    print("")
+    
